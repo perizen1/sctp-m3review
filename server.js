@@ -149,7 +149,7 @@ const server = http.createServer(async (req, res) => {
     return res.end();
   }
 
-  if (req.method === 'GET' && parsed.pathname === '/healthz') {
+  if (req.method === 'GET' && (parsed.pathname === '/healthz' || parsed.pathname === '/health')) {
     return json(res, 200, { ok: true, rooms: rooms.size, uptime: process.uptime() });
   }
 
