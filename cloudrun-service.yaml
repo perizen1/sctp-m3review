@@ -1,0 +1,27 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: ml-module3-poll
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: "1"
+    spec:
+      containerConcurrency: 200
+      timeoutSeconds: 3600
+      containers:
+      - image: REGION-docker.pkg.dev/PROJECT_ID/REPOSITORY/ml-module3-poll:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: SSE_HEARTBEAT_MS
+          value: "25000"
+        - name: ROOM_TTL_MS
+          value: "14400000"
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi

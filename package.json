@@ -1,0 +1,14 @@
+{
+  "name": "ml-module3-live-poll-presentation",
+  "version": "3.1.0-cloudrun",
+  "description": "Interactive Module 3 recap presentation with live multi-participant polling, prepared for Google Cloud Run.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "PORT=3000 node server.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=20"
+  },
+  "private": true
+}
