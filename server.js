@@ -185,8 +185,8 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'POST' && parsed.pathname === '/api/create-room') {
-    let code;
-    do { code = makeCode(); } while (rooms.has(code));
+    const code = 'DS5';
+    if (rooms.has(code)) rooms.delete(code);
     const st = createRoom(code);
     return json(res, 200, { ok: true, room: code, presenterToken: st.presenterToken });
   }
